@@ -4,5 +4,10 @@ sources:
   - name: source_a
     database: capstone_team_jan_2023_dev
     tables:
-      - name: fhir_encounter
       - name: fhir_patient
+        columns:
+          - name: id
+            tests:
+              - unique
+              - not_null
+              
