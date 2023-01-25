@@ -4,4 +4,4 @@ models:
   - name: stg_patient
     tests:
       - dbt_utils.equal_rowcount:
-          compare_model: capstone_team_jan_2023.nay.stg_patient
+          compare_model: ref('fhir_patient')

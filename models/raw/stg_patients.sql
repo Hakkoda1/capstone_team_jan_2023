@@ -1,9 +1,4 @@
 --This staging file renames the columns to make them more descriptive while excluding those that are either all NULL or redundant.
--- {{
---     config(
---         materialized='table'
---     )
--- }} --This will save the output of this stg_patient model in Snowflake as a table rather than as a view.
 
 with 
 
