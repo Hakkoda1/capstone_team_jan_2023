@@ -1,7 +1,0 @@
-version: 2
-
-models:
-  - name: stg_patient
-    tests:
-      - dbt_utils.equal_rowcount:
-          compare_model: ref('fhir_patient')

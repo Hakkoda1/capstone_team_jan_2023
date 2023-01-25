@@ -2,12 +2,6 @@
 
 with 
 
-source as (
-
-    select * from {{ source('source_a', 'fhir_patient') }}
-
-),
-
 patients as (
 
     select 
@@ -29,7 +23,7 @@ patients as (
         telecom as patient_phone_number
         --resource_text
         
-    from source
+    from {{ ref('raw_patients') }}
 
 )
 
