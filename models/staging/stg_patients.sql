@@ -7,9 +7,9 @@ patients as (
     select 
 
         address as patient_address,
-        birthdate as patient_birthdate,
+        birthdate as patient_birth_date,
         communication as patient_preferred_language,
-        deceaseddatetime as patient_deceased_datetime,
+        deceaseddatetime as patient_deceased_date,
         extension as patient_race_and_origin_info,
         gender as patient_gender,
         id as patient_id,
