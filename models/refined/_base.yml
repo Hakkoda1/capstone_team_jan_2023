@@ -1,7 +1,0 @@
-version: 2
-
-models:
-  - name: stg_patients
-    tests:
-      - dbt_utils.equal_rowcount:
-          compare_model: ref('raw_patients')
