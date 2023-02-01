@@ -34,11 +34,11 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   capstone_team_1_jan_2023:
     # Applies to all files under models/example/
-    staging:
-      materialized: view
+    # staging:
+    #   materialized: view
     raw:
       materialized: view
-    refinded:
+    refined:
       materialized: view
     curated:
       materialized: table
