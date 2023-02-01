@@ -5,13 +5,14 @@ models:
     description: This model brings in source_a/fhir_patient table from Snowflake exactly the way it is.
     columns:
       - name: id
-        description: This is the Medical Record Number, a potential primary key for this table. However, unique test failed so row deduplication needs to be done later on.
+        description: This is the Medical Record Number, a potential primary key for this table. However, unique test failed. Upon inspection within, it is found that some rows are
+                     duplicates so row deduplication needs to be done.
         tests: 
         - unique
         - not_null
       - name: identifier
         description: Another column that could be a primary key. But unlike 'id' column (which is a string data type), 'identifier' is of variant data type. In addition to
-                    medical record number, there are other PIIs such as SSN and Driver's license number.
+                    medical record number, there are other PIIs such as SSN and Driver's license number. Unique test failed for this column as well.
         tests:
         - unique
         - not_null
