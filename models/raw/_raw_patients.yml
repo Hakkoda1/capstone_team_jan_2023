@@ -7,6 +7,5 @@ models:
         tests: 
         - unique
         - not_null
-        # - dbt_utils.equal_rowcount:
-        #   compare_model: ref('other_table_name')
+
               
