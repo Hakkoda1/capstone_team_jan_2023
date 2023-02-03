@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: raw_encounters
+    description: This model brings in source_a/fhir_encounter table from Snowflake exactly the way it is.
+    columns:
+      - name: id
+        description: This is the Medical Record Number, which is the primary key for this table. 
+        tests: 
+        - unique
+        - not_null
+      - name: identifier
+        description: Another column that could be a back-up primary key. But unlike 'id' column (which is a string data type), 'identifier' is of variant data type. In addition to
+                    medical record number, there are other PIIs such as SSN and Driver's license number. 
+        tests:
+        - unique
+        - not_null
