@@ -4,6 +4,9 @@ models:
   - name: base_patients
     description: This model performs json-flattening of certain columns in raw_patients model. All the columns are renamed
                   to make them more descriptive.
+    tests:
+      - dbt_utils.equal_rowcount:
+          compare_model: ref('raw_patients')
     columns:
       - name: patient_id
         description: This is the primary key of base_patients view/model. Note that this is the name as the Medical Record
@@ -11,6 +14,4 @@ models:
         tests:
           - unique
           - not_null
-          - dbt_utils.equal_rowcount:
-              compare_model: ref('raw_patients')
           
