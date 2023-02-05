@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: base_patients
+    description: This model performs json-flattening of certain columns in raw_patients model. All the columns are renamed
+                  to make them more descriptive.
+    columns:
+      - name: patient_id
+        description: This is the primary key of base_patients view/model. Note that this is the name as the Medical Record
+                      Number which is a separate column by itself in this model.
+        tests:
+          - unique
+          - not_null
+          
