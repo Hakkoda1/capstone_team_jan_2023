@@ -11,4 +11,6 @@ models:
         tests:
           - unique
           - not_null
+          - dbt_utils.equal_rowcount:
+              compare_model: ref('raw_patients')
           
