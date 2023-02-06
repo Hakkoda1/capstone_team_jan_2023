@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: capstone__source_a
+    database: capstone_team_jan_2023_dev
+    schema: source_a
+    tables:
+      - name: fhir_patient
+      - name: fhir_encounter
