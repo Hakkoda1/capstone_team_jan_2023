@@ -2,7 +2,7 @@ with
     patient_calculation as (
         select
             -- patient_skey,  
-            -- effective_date,
+            current_timestamp() as effective_date,
             id as patient_id,
             identifier[1].value::string as medical_record_number,
             identifier[2].value::string as social_security_number,
@@ -35,7 +35,7 @@ with
     )
 select
     -- patient_skey,  
-    -- effective_date,
+    effective_date,
     patient_id,
     medical_record_number,
     social_security_number,
