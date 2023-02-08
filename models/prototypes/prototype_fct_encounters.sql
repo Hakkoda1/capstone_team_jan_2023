@@ -17,6 +17,6 @@ select
         then 'N'
     end as is_discharged,
     datediff(day, encounter_start_datetime, encounter_end_datetime) as length_of_stay
-from capstone_team_jan_2023_dev.source_a.fhir_encounter
-;
+from {{ ref('raw_encounters') }}
+
 

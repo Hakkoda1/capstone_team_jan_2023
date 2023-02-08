@@ -31,7 +31,7 @@ with
                 when age > 60
                 then 'old adults (>60)'
             end as age_bucket
-        from capstone_team_jan_2023_dev.source_a.fhir_patient
+        from {{ ref('raw_patients') }}
     )
 select
     -- patient_skey,  
@@ -45,4 +45,3 @@ select
     death_date,
     age_bucket
 from patient_calculation
-;
