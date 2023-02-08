@@ -25,6 +25,7 @@ base_patients as (
         case
             when maritalstatus:text::varchar = 'S' then 'Single'
             when maritalstatus:text::varchar = 'M' then 'Married'
+            else maritalstatus:text::varchar
         end as patient_marital_status,
         multiplebirthboolean as patient_has_siblings,
         multiplebirthinteger as patient_birth_order,
