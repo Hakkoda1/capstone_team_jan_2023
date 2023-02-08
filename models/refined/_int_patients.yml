@@ -1,0 +1,15 @@
+version: 2
+
+models:
+  - name: int_patients
+    description: This model adds three more fields/columns to base_patients model (1) effective_date, (2) patient_age and (3) patient_age_bucket.
+    tests:
+      - dbt_utils.equal_rowcount:
+          compare_model: ref('base_patients')
+    columns:
+      - name: patient_id
+        description: This is the primary key of int_patients model (at least for now since we will had a key column in the curated model). 
+                      Note that this is the name as the Medical Record Number which is a separate column by itself in this model.
+        tests:
+          - unique
+          - not_null
