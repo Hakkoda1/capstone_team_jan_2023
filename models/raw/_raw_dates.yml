@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: raw_dates
+    description: This model creates a raw table containing dates from January 1911 to March 2023.
+    columns:
+      - name: date_day
+        description: Contains the date days
+        tests: 
+        - unique
+        - not_null
