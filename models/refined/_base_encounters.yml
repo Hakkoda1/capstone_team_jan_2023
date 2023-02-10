@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: base_patients
+  - name: base_encounters
     description: This model performs json-flattening of certain columns in raw_encounters model. All the columns are renamed
                   to make them more descriptive.
     tests:
