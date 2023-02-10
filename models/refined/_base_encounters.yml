@@ -1,0 +1,15 @@
+version: 2
+
+models:
+  - name: base_encounters
+    description: This model performs json-flattening of certain columns in raw_encounters model. All the columns are renamed
+                  to make them more descriptive.
+    tests:
+      - dbt_utils.equal_rowcount:
+          compare_model: ref('raw_encounters')
+    columns:
+      - name: encounter_id
+        description: This is the primary key of base_encounters view/model.
+        tests:
+          - unique
+          - not_null
