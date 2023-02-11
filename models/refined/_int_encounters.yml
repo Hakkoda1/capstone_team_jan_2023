@@ -12,3 +12,8 @@ models:
         tests:
           - unique
           - not_null
+      - name: patient_skey
+        tests:
+          - relationships:
+              to: ref('int_patients')
+              field: patient_skey
