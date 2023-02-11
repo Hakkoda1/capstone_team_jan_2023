@@ -10,7 +10,9 @@ int_encounters as (
 
     select
 
+        abs(hash(encounter_id)) as encounter_skey,
         current_timestamp() as effective_date,
+        abs(hash(patient_id)) as patient_skey,
         *,
         case
             when split_part(discharge_disposition, ' ', 0) in ('Discharge', 'Discharged') then true
