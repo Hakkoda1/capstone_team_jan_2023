@@ -12,7 +12,9 @@ models:
         tests:
           - unique
           - not_null
+
       - name: patient_skey
+        description: This is the foreign key (to int_patients model).
         tests:
           - relationships:
               to: ref('int_patients')
