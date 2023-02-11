@@ -7,7 +7,7 @@ models:
       - dbt_utils.equal_rowcount:
           compare_model: ref('base_encounters')
     columns:
-      - name: encounter_id
+      - name: encounter_skey
         description: This is the primary key of int_encounters model.
         tests:
           - unique
