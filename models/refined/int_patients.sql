@@ -10,6 +10,7 @@ int_patients as (
 
     select
 
+        abs(hash(patient_id)) as patient_skey,
         current_timestamp() as effective_date,
         *,
         case
