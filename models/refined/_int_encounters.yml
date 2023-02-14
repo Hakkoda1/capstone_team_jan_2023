@@ -1,0 +1,21 @@
+version: 2
+
+models:
+  - name: int_encounters
+    description: This model adds three more fields/columns to base_patients model (1) effective_date, (2) is_discharged and (3) length_of_stay.
+    tests:
+      - dbt_utils.equal_rowcount:
+          compare_model: ref('base_encounters')
+    columns:
+      - name: encounter_skey
+        description: This is the primary key of int_encounters model.
+        tests:
+          - unique
+          - not_null
+
+      - name: patient_skey
+        description: This is the foreign key (to int_patients model).
+        tests:
+          - relationships:
+              to: ref('int_patients')
+              field: patient_skey
