@@ -10,6 +10,7 @@ final as (
 
     select
 
+        patient_skey,
         effective_date,
         patient_id,
         patient_medical_record_number as medical_record_number,

@@ -1,7 +1,7 @@
 with
     patient_calculation as (
         select
-            -- patient_skey,  
+            abs(hash(id)) as patient_skey,  
             current_timestamp() as effective_date,
             id as patient_id,
             identifier[1].value::string as medical_record_number,
@@ -34,7 +34,7 @@ with
         from {{ ref('raw_patients') }}
     )
 select
-    -- patient_skey,  
+    patient_skey,  
     effective_date,
     patient_id,
     medical_record_number,
