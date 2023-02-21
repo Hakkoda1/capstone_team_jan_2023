@@ -10,7 +10,6 @@ final as (
 
     select
 
-        abs(hash(patient_id)) as patient_skey,
         effective_date,
         patient_id,
         patient_medical_record_number as medical_record_number,
