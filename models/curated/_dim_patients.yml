@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: dim_patients
+    description: This is the curated/final patients model that a BI analyst can readily pull from.
+    tests:
+      - dbt_utils.equal_rowcount:
+          compare_model: ref('int_patients')
+      - dbt_utils.equal_rowcount:
+          compare_model: ref('prototype_dim_patients')
+    columns:
+      - name: patient_skey
+        description: This is the primary key of dim_patients model
+        tests:
+          - unique
+          - not_null
+          
+      
