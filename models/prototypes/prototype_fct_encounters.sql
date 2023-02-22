@@ -11,10 +11,8 @@ select
     reasoncode[0].coding[0]:display::string as reason,
     hospitalization:dischargedisposition:text::string as discharge_disposition,
     case
-        when discharge_disposition is not null
-        then 'Y'
-        when discharge_disposition is null
-        then 'N'
+        when split_part(discharge_disposition, ' ', 0) in ('Discharge', 'Discharged') then true
+        when split_part(discharge_disposition, ' ', 0) in ('Transferred', 'Expired') then false
     end as is_discharged,
     datediff(day, encounter_start_datetime, encounter_end_datetime) as length_of_stay
 from {{ ref('raw_encounters') }}
