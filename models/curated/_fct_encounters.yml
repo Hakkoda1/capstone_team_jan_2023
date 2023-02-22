@@ -1,0 +1,65 @@
+version: 2
+
+models:
+  - name: fct_encounters
+    description: Model for final table fct_encounter, which contains data related to a patient medical encounter. 
+    tests:
+      - dbt_utils.equal_rowcount:
+          compare_model: ref('int_encounters')
+      - dbt_utils.equal_rowcount:
+          compare_model: ref('prototype_fct_encounters')
+
+    columns: 
+      - name: fct_encounter_skey
+        description: Primary key
+        tests:
+          - unique
+          - not_null
+
+      - name: effective_date
+        description: Effective date of the record, set as current_timestamp for project purposes. 
+        tests:
+          - not_null
+
+      - name: encounter_end_date_skey
+        description: Foreign key for encounter end date, generated using macro.
+        tests:
+          - not_null
+
+      - name: encounter_start_date_skey
+        description: Foreign key for encounter start date, generated using macro.
+        tests:
+          - not_null
+          
+      - name: patient_skey
+        description: Foreign key for patient id, generated using macro.
+        tests:
+          - not_null
+
+      - name: encounter_id
+        description: Identificator for encounter. 
+        tests:
+          - not_null
+
+      - name: encounter_start_datetime
+        description: Start date of medical encounter.
+
+      - name: encounter_end_datetime
+        description: End date of medical encounter.  
+        tests: 
+          - not_null
+
+      - name: location
+        description: Medical center location, where the encounter took place. 
+
+      - name: discharge_disposition
+        description: Information on patient discharge disposition by the doctor. 
+
+      - name: is_discharged
+        description: Indicates if the patient was discharged with a specific disposition or not. 
+
+      - name: length_of_stay
+        tests: 
+          - not_null
+          - dbt_utils.expression_is_true:
+             expression: ">= 0"
