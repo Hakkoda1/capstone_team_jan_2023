@@ -63,3 +63,35 @@ models:
           - not_null
           - dbt_utils.expression_is_true:
              expression: ">= 0"
+
+metrics:
+      - name: Average_length_of_stay
+        label: Average length of stay
+        model: ref('fct_encounters')
+        description: Average length of stay of all encounters
+        calculation_method: average
+        expression: length_of_stay 
+        timestamp: encounter_start_datetime
+        time_grains: [day]
+        dimensions: [discharge_disposition]
+
+      - name: Median_length_of_stay
+        label: Median length of stay
+        model: ref('fct_encounters')
+        description: Median length of stay of all encounters
+        calculation_method: median
+        expression: length_of_stay
+        timestamp: encounter_start_datetime
+        time_grains: [day]
+        dimensions: [discharge_disposition]
+
+
+      - name: Max_length_of_stay
+        label: Max length of stay
+        model: ref('fct_encounters')
+        description: Longest length of stay of all encounters
+        calculation_method: max
+        expression: length_of_stay
+        timestamp: encounter_start_datetime
+        time_grains: [day]
+        dimensions: [discharge_disposition]
